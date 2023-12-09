@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+<head>
+ <title>Prosty Graf - Cytoscape.js</title>
+ <script src="https://unpkg.com/cytoscape/dist/cytoscape.min.js"></script>
+
+ <style>
+ #cy {width:600px; height:600px; display:block; margin:20px auto; border:1px solid black;}
+ </style>
+</head>
+<body>
+ <div id="cy"></div>
+ <script>
+var graphElements = [
+ { data: { id: 'Adam' } },
+ { data: { id: 'Gosia' } },
+ { data: { id: 'Marek' } },
+ { data: { id: 'Tomek' } },
+ { data: { id: 'Ewa' } },
+ { data: { id: 'Pawel' } },
+ { data: { id: 'Ola' } },
+
+ { data: { id: 'Adam_Gosia', source: 'Adam', target: 'Gosia' }},
+ { data: { id: 'Gosia_Adam', source: 'Gosia', target: 'Adam' }},
+ { data: { id: 'Gosia_Marek', source: 'Gosia', target: 'Marek' }},
+ { data: { id: 'Marek_Gosia', source: 'Marek', target: 'Gosia' }},
+ { data: { id: 'Gosia_Tomek', source: 'Gosia', target: 'Tomek' }},
+ { data: { id: 'Tomek_Gosia', source: 'Tomek', target: 'Gosia' }},
+ { data: { id: 'Marek_Ewa', source: 'Marek', target: 'Ewa' }},
+ { data: { id: 'Ewa_Marek', source: 'Ewa', target: 'Marek' }},
+ { data: { id: 'Tomek_Ewa', source: 'Tomek', target: 'Ewa' }},
+ { data: { id: 'Ewa_Tomek', source: 'Ewa', target: 'Tomek' }},
+ { data: { id: 'Ewa_Pawel', source: 'Ewa', target: 'Pawel' }},
+ { data: { id: 'Pawel_Ewa', source: 'Pawel', target: 'Ewa' }},
+ { data: { id: 'Pawel_Adam', source: 'Pawel', target: 'Adam' }},
+ { data: { id: 'Pawel_Ola', source: 'Pawel', target: 'Ola' }},
+ { data: { id: 'Adam_Pawel', source: 'Adam', target: 'Pawel' }},
+ { data: { id: 'Ola_Pawel', source: 'Ola', target: 'Pawel' }},
+ { data: { id: 'Ola_Gosia', source: 'Ola', target: 'Gosia' }},
+ { data: { id: 'Gosia_Ola', source: 'Gosia', target: 'Ola' }},
+ { data: { id: 'Ola_Marek', source: 'Ola', target: 'Marek' }},
+ { data: { id: 'Marek_Ola', source: 'Marek', target: 'Ola' }},
+
+];
+var graphStyle = [
+ {
+    selector: 'node',
+      css: {
+        'content': 'data(id)',
+        'text-valign': 'center',
+        'text-halign': 'center',
+        'color':'black',
+        //'background-color':'white'
+      }
+ },
+ {
+    selector: 'edge',
+      css: {
+        'curve-style': 'bezier',
+        'target-arrow-shape': 'triangle'
+      }
+ }
+];
+var graphLayout = {
+ name: 'grid'
+};
+ var cy = cytoscape({
+ container: document.getElementById('cy'),
+ elements: graphElements,
+ style: graphStyle,
+ layout: graphLayout
+ });
+ </script>
+</body>
+</html>
